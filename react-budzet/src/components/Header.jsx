@@ -1,3 +1,4 @@
+import React from "react";
 import "../reset.css";
 import "../App.css";
 import Image from "../assets/icons8-us-dollar-circled-100.png"
