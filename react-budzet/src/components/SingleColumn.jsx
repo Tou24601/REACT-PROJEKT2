@@ -1,6 +1,3 @@
-import React from "react";
-import "../reset.css";
-import "../App.css";
 import Inputs from "./Inputs";
 
 const SingleColumn = ({
@@ -11,6 +8,8 @@ const SingleColumn = ({
   numberInputPlaceholder,
   sumName,
   sumId,
+  buttonId,
+  unorderedListId
 }) => {
   return (
     <div className="col-12 col-xl-6 border income text-start pb-5 tableHolder">
@@ -20,8 +19,10 @@ const SingleColumn = ({
         nameInputPlaceholder={nameInputPlaceholder}
         numberInputId={numberInputId}
         numberInputPlaceholder={numberInputPlaceholder}
+        handleClick={"nazwa funkcji"}
+        buttonId={buttonId}
       />
-      <ul className="mt-4" id="unorderedList"></ul>
+      <ul className="mt-4" id={unorderedListId}></ul>
       <p className="align-text-bottom mt-5 bottomText sums">
         Suma {sumName}:{" "}
         <span className="sum fw-bold" id={sumId}>

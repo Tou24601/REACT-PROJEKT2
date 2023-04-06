@@ -1,5 +1,3 @@
-import "../reset.css";
-import "../App.css";
 import Button from "./Button";
 
 const Inputs = ({
@@ -7,6 +5,7 @@ const Inputs = ({
   nameInputPlaceholder,
   numberInputId,
   numberInputPlaceholder,
+  buttonId
 }) => {
   return (
     <div className="row">
@@ -27,7 +26,7 @@ const Inputs = ({
         />
       </div>
       <div className="col-2">
-        <Button idValue="incomeButton" buttonValue="Dodaj" />
+        <Button buttonId={buttonId} buttonValue="Dodaj" />
       </div>
     </div>
   );
