@@ -3,8 +3,10 @@ import Button from "./Button";
 const Inputs = ({
   nameInputId,
   nameInputPlaceholder,
+  nameInputValue,
   numberInputId,
   numberInputPlaceholder,
+  amountInputValue,
   buttonId
 }) => {
   return (
@@ -15,6 +17,7 @@ const Inputs = ({
           id={nameInputId}
           type="text"
           placeholder={nameInputPlaceholder}
+          value={nameInputValue}
         />
       </div>
       <div className="col-4">
@@ -23,6 +26,7 @@ const Inputs = ({
           id={numberInputId}
           type="number"
           placeholder={numberInputPlaceholder}
+          value={amountInputValue}
         />
       </div>
       <div className="col-2">

@@ -6,6 +6,9 @@ import SingleColumn from "./components/SingleColumn";
 import ListItem from "./components/ListItem";
 
 function App() {
+
+
+
   return (
     <div className="container text-center m-4">
       <Header />
@@ -17,6 +20,7 @@ function App() {
           numberInputId="incomeNumber"
           numberInputPlaceholder="Kwota"
           buttonId="incomeButton"
+          listName="incomeList"
           unorderedListId="unorderedListIncome"
           sumName="przychodów"
           sumId="incomeSum"
@@ -28,6 +32,8 @@ function App() {
           numberInputId="expensesNumber"
           numberInputPlaceholder="Kwota"
           buttonId="expensesButton"
+          listName="expensesList"
+          handleClick=""
           unorderedListId="unorderedListexpenses"
           sumName="wydatków"
           sumId="expensesSum"
