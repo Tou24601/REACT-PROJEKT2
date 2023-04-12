@@ -6,36 +6,18 @@ const SingleColumn = ({
   nameInputId,
   nameInputPlaceholder,
   nameInputValue,
-  numberInputId,
-  numberInputPlaceholder,
+  handleNameInputChange,
+  amountInputId,
+  amountInputPlaceholder,
   amountInputValue,
+  handleAmountInputChange,
   sumName,
   sumId,
   buttonId,
+  handleClick,
   listName,
   unorderedListId
 }) => {
-  let incomeList = [];
-  let expensesList = [];
-
-  const addItem = (listName) => {
-    if (
-      {nameInputValue} === "" ||
-      {amountInputValue} === "" ||
-      {amountInputValue} <= 0
-    ) {
-      alert("Wprowadź poprawne dane");
-    } else {
-      const newItem = {
-        name: {nameInputValue},
-        value: {amountInputValue},
-        id: Date.now(),
-      };
-      listName.push(newItem);
-      nameInputValue = "";
-      amountInputValue = "";
-    }
-  };
 
   const [sumAmount, setSumAmount] = useState(0);
   return (
@@ -44,10 +26,14 @@ const SingleColumn = ({
       <Inputs
         nameInputId={nameInputId}
         nameInputPlaceholder={nameInputPlaceholder}
-        numberInputId={numberInputId}
-        numberInputPlaceholder={numberInputPlaceholder}
-        handleClick={addItem({listName})}
+        nameInputValue={nameInputValue}
+        handleNameInputChange={handleNameInputChange}
+        amountInputId={amountInputId}
+        amountInputPlaceholder={amountInputPlaceholder}
+        amountInputValue={amountInputValue}
+        handleAmountInputChange={handleAmountInputChange}
         buttonId={buttonId}
+        handleClick={handleClick}
       />
       <ul className="mt-4" id={unorderedListId}></ul>
       <p className="align-text-bottom mt-5 bottomText sums">
