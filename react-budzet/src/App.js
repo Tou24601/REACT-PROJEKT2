@@ -8,10 +8,10 @@ import ListItem from "./components/ListItem";
 
 function App() {
   const [incomeList, setIncomeList] = useState([]);
-  const [expensesList, setExpensesList] = useState([])
+  const [expensesList, setExpensesList] = useState([]);
 
-  const [nameInputValue, setNameInputValue] = useState("")
-  const [amountInputValue, setAmountInputValue] = useState("")
+  const [nameInputValue, setNameInputValue] = useState("");
+  const [amountInputValue, setAmountInputValue] = useState("");
 
   const addItem = (listName, functionName) => {
     if (
@@ -20,23 +20,25 @@ function App() {
       amountInputValue <= 0
     ) {
       alert("Wprowadź poprawne dane");
-    }
-    const newItem = {
-      name: nameInputValue,
-      value: amountInputValue,
-      id: Date.now(),
-    };
-    const newList = listName.push(newItem)
-    console.log(nameInputValue)
-    console.log(amountInputValue)
-    console.log(listName);
+    } else {
+      const newItem = {
+        name: nameInputValue,
+        value: amountInputValue,
+        id: Date.now(),
+      };
+      listName.push(newItem);
+      console.log(listName);
 
-    functionName = () => {
-      listName = newList
-      return newList;
+      createListItem(listName);
     }
-    console.log(incomeList)
-  }
+  };
+
+  const createListItem = (listName) => {
+    const newList = listName.map((item) => (
+      <ListItem key={item.id} name={item.name} amount={item.value} />
+    ));
+    return newList;
+  };
 
   return (
     <div className="container text-center m-4">
@@ -44,33 +46,23 @@ function App() {
       <div className="row">
         <SingleColumn
           columnName="Przychody"
-          nameInputId="incomeNameInput"
           nameInputPlaceholder="Nazwa przychodu"
-          nameInputValue=""
-          handleNameInputChange={e => setNameInputValue(e.target.value)}
-          amountInputId="incomeNumber"
-          amountInputPlaceholder="Kwota"
-          handleAmountInputChange={e => setAmountInputValue(e.target.value)}
-          buttonId="incomeButton"
+          handleNameInputChange={(e) => setNameInputValue(e.target.value)}
+          handleAmountInputChange={(e) => setAmountInputValue(e.target.value)}
           handleClick={() => addItem(incomeList, setIncomeList)}
-          unorderedListId="unorderedListIncome"
+          newUnorderedIncomeList={""}
           sumName="przychodów"
-          sumId="incomeSum"
         />
         <SingleColumn
           columnName="Wydatki"
-          nameInputId="expensesNameInput"
           nameInputPlaceholder="Nazwa wydatku"
-          amountInputId="expensesNumber"
-          amountInputPlaceholder="Kwota"
-          buttonId="expensesButton"
-          handleClick={/*addItem(expensesList, setExpensesList)*/""}
-          unorderedListId="unorderedListexpenses"
+          handleNameInputChange={(e) => setNameInputValue(e.target.value)}
+          handleAmountInputChange={(e) => setAmountInputValue(e.target.value)}
+          handleClick={() => addItem(expensesList, setExpensesList)}
+          newUnorderedExpensesList={""}
           sumName="wydatków"
-          sumId="expensesSum"
         />
       </div>
-      <ListItem />
     </div>
   );
 }

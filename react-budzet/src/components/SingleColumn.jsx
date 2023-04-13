@@ -3,20 +3,14 @@ import Inputs from "./Inputs";
 
 const SingleColumn = ({
   columnName,
-  nameInputId,
   nameInputPlaceholder,
-  nameInputValue,
   handleNameInputChange,
-  amountInputId,
-  amountInputPlaceholder,
-  amountInputValue,
   handleAmountInputChange,
   sumName,
-  sumId,
-  buttonId,
   handleClick,
-  listName,
-  unorderedListId
+  name,
+  amount,
+  newUnorderedList
 }) => {
 
   const [sumAmount, setSumAmount] = useState(0);
@@ -24,21 +18,18 @@ const SingleColumn = ({
     <div className="col-12 col-xl-6 border income text-start pb-5 tableHolder">
       <p className="text-uppercase fw-bold fs-4 m-2">{columnName}</p>
       <Inputs
-        nameInputId={nameInputId}
         nameInputPlaceholder={nameInputPlaceholder}
-        nameInputValue={nameInputValue}
         handleNameInputChange={handleNameInputChange}
-        amountInputId={amountInputId}
-        amountInputPlaceholder={amountInputPlaceholder}
-        amountInputValue={amountInputValue}
         handleAmountInputChange={handleAmountInputChange}
-        buttonId={buttonId}
         handleClick={handleClick}
+        name={name}
+        amount={amount}
+
       />
-      <ul className="mt-4" id={unorderedListId}></ul>
+      <ul className="mt-4">{newUnorderedList}</ul>
       <p className="align-text-bottom mt-5 bottomText sums">
         Suma {sumName}:{" "}
-        <span className="sum fw-bold" id={sumId}>
+        <span className="sum fw-bold">
           {sumAmount}
         </span>
         <span className="fw-bold"> zł</span>
