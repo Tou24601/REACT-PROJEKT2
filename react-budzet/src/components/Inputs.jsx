@@ -15,7 +15,7 @@ const Inputs = ({
           className="form-control form-control-lg"
           type="text"
           placeholder={nameInputPlaceholder}
-          onChange={handleNameInputChange/*e => setNameInputValue(e.target.value)*/}
+          onChange={handleNameInputChange}
         />
       </div>
       <div className="col-4">
@@ -23,7 +23,7 @@ const Inputs = ({
           className="form-control form-control-lg mt-2 mt-lg-0"
           type="number"
           placeholder="Kwota"
-          onChange={handleAmountInputChange/*e => setAmountInputValue(e.target.value)*/}
+          onChange={handleAmountInputChange}
         />
       </div>
       <div className="col-2">

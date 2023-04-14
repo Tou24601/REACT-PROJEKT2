@@ -1,5 +1,6 @@
 import {useState} from "react";
 import Inputs from "./Inputs";
+import UnorderedList from "./UnorderedList";
 
 const SingleColumn = ({
   columnName,
@@ -10,7 +11,7 @@ const SingleColumn = ({
   handleClick,
   name,
   amount,
-  newUnorderedList
+  listName
 }) => {
 
   const [sumAmount, setSumAmount] = useState(0);
@@ -26,7 +27,7 @@ const SingleColumn = ({
         amount={amount}
 
       />
-      <ul className="mt-4">{newUnorderedList}</ul>
+      <UnorderedList listName={listName} />
       <p className="align-text-bottom mt-5 bottomText sums">
         Suma {sumName}:{" "}
         <span className="sum fw-bold">

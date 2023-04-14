@@ -4,11 +4,11 @@ import "./App.css";
 import { useState } from "react";
 import Header from "./components/Header";
 import SingleColumn from "./components/SingleColumn";
-import ListItem from "./components/ListItem";
 
 function App() {
-  const [incomeList, setIncomeList] = useState([]);
-  const [expensesList, setExpensesList] = useState([]);
+
+  let [incomeList, setIncomeList] = useState([]);
+  let [expensesList, setExpensesList] = useState([]);
 
   const [nameInputValue, setNameInputValue] = useState("");
   const [amountInputValue, setAmountInputValue] = useState("");
@@ -28,16 +28,9 @@ function App() {
       };
       listName.push(newItem);
       console.log(listName);
-
-      createListItem(listName);
+      
+      return listName;
     }
-  };
-
-  const createListItem = (listName) => {
-    const newList = listName.map((item) => (
-      <ListItem key={item.id} name={item.name} amount={item.value} />
-    ));
-    return newList;
   };
 
   return (
@@ -50,7 +43,7 @@ function App() {
           handleNameInputChange={(e) => setNameInputValue(e.target.value)}
           handleAmountInputChange={(e) => setAmountInputValue(e.target.value)}
           handleClick={() => addItem(incomeList, setIncomeList)}
-          newUnorderedIncomeList={""}
+          listName={incomeList}
           sumName="przychodów"
         />
         <SingleColumn
@@ -59,7 +52,7 @@ function App() {
           handleNameInputChange={(e) => setNameInputValue(e.target.value)}
           handleAmountInputChange={(e) => setAmountInputValue(e.target.value)}
           handleClick={() => addItem(expensesList, setExpensesList)}
-          newUnorderedExpensesList={""}
+          listName={expensesList}
           sumName="wydatków"
         />
       </div>
