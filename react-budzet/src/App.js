@@ -9,14 +9,6 @@ function App() {
   const [incomeList, setIncomeList] = useState([]);
   const [expensesList, setExpensesList] = useState([]);
 
-  /*const addNewItemToList = (item) => {
-    console.log(item)
-    //jak wytłumaczyć mu, którą listę ma wybrać? czy wybrać listę tu i przekazać do singlecolumn, żeby tam dodał to do listy? czy wcisnąć mu tutaj listę?
-          //type === "incomes"
-        //? setIncomeList([...incomeList, newItem])
-       // : setExpensesList([...expensesList, newItem]);
-  }*/
-
   return (
     <div className="container text-center m-4">
       <Header />
@@ -27,15 +19,14 @@ function App() {
           amountInputPlaceholder="Kwota"
           listName={incomeList}
           setListName={setIncomeList}
-          //handleNewItem={addNewItemToList}
           sumName="przychodów"
         />
         <SingleColumn
           columnName="Wydatki"
           nameInputPlaceholder="Nazwa wydatku"
           amountInputPlaceholder="Kwota"
-          setListName={setExpensesList}
           listName={expensesList}
+          setListName={setExpensesList}
           sumName="wydatków"
         />
       </div>

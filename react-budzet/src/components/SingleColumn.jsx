@@ -36,8 +36,6 @@ const SingleColumn = ({
 
       console.log(listName)
 
-      //handleNewItem(newItem)
-
     }
   };
 
@@ -53,7 +51,7 @@ const SingleColumn = ({
         addButtonValue="Dodaj"
 
       />
-      <UnorderedList listName={listName} />
+      <UnorderedList listName={listName} setListName={setListName} />
       <p className="align-text-bottom mt-5 bottomText sums">
         Suma {sumName}:{" "}
         <span className="sum fw-bold">
