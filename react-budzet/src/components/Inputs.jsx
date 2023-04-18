@@ -2,32 +2,52 @@ import { useState } from "react";
 import Button from "./Button";
 
 const Inputs = ({
+  inputsStyle,
   nameInputPlaceholder,
-  handleNameInputChange,
-  handleAmountInputChange,
-  handleClick,
+  amountInputPlaceholder,
+  addButtonValue,
+  handleAddClick,
+  name,
+  amount
 }) => {
 
+  const [nameInputValue, setNameInputValue] = useState(name || "");
+  const [amountInputValue, setAmountInputValue] = useState(amount || "");
+
+  const clearInputs = () => {
+    setNameInputValue("");
+    setAmountInputValue("");
+
+  }
+
+  const getValuesFromInputs = () => {
+    handleAddClick(nameInputValue, amountInputValue)
+    clearInputs()
+    
+  }
+
   return (
-    <div className="row">
-      <div className="col-12 col-lg-6">
+    <div className="row" style={inputsStyle}>
+      <div className="col-11 col-lg-5">
         <input
           className="form-control form-control-lg"
           type="text"
           placeholder={nameInputPlaceholder}
-          onChange={handleNameInputChange}
+          value={nameInputValue}
+          onChange={(e) => setNameInputValue(e.target.value)}
         />
       </div>
       <div className="col-4">
         <input
           className="form-control form-control-lg mt-2 mt-lg-0"
           type="number"
-          placeholder="Kwota"
-          onChange={handleAmountInputChange}
+          placeholder={amountInputPlaceholder}
+          value={amountInputValue}
+          onChange={(e) => setAmountInputValue(e.target.value)}
         />
-      </div>
+      </div> 
       <div className="col-2">
-        <Button buttonValue="Dodaj" handleClick={handleClick} />
+        <Button buttonValue={addButtonValue} handleClick={getValuesFromInputs} />
       </div>
     </div>
   );
