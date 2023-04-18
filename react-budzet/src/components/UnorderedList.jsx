@@ -6,21 +6,20 @@ const UnorderedList = ({ listName, setListName }) => {
   //const [nameInputValue, setNameInputValue] = useState("");
   //const [amountInputValue, setAmountInputValue] = useState("");
 
+  //const [isEditable, setIsEditable] = useState(false);
 
- const [isEditable, setIsEditable] = useState(false);
-
-  const inputsStyling = {
+  /*const inputsStyling = {
     position: "absolute",
     with: "",
     display: isEditable ? "" : "none",
     backgroundColor: "white"
-  };
+  };*/
 
-  const editListItem = () => {
+  /*const editListItem = () => {
     setIsEditable(!isEditable);
-  };
+  };*/
 
-  const closeEditing = (editedName, editedValue) => {
+  /*const closeEditing = (editedName, editedValue) => {
 
     console.log(editedName, editedValue)
     if (
@@ -38,19 +37,19 @@ const UnorderedList = ({ listName, setListName }) => {
       //czy muszę filtrować, czy po prostu zrobić set? a może metodą find? i to samo w delete?
       setIsEditable(!isEditable);
     }
-  };
+  };*/
 
-  const deleteListItem = (index) => {
+  /*const deleteListItem = (index) => {
     console.log("I co teraz?");
 
     //listName
     //filtrowanie po id > usuń listItem z odpowiedniej listy
-  };
+  };*/
   
   return (
     <ul className="mt-4">
       {listName.map((item) => (
-        <ListItem key={item.id} name={item.name} amount={item.value} inputsStyle={inputsStyling} handleEditClick={editListItem} handleDeleteClick={() => deleteListItem(item.id)} handleAddClick={closeEditing} /* handleAddClick={closeEditing}  /*addButtonValue="Zapisz"  handleCloseEditing={closeEditing} handleDeleteClick={() => deleteListItem()} handleNameInputChange={(e) => setNameInputValue(e.target.value)} handleAmountInputChange={(e) => setAmountInputValue(e.target.value)} */ />
+        <ListItem key={item.id} name={item.name} amount={item.value} indexValue={item.id} setListName={setListName} /*inputsStyle={inputsStyling} handleEditClick={editListItem} handleDeleteClick={() => deleteListItem(item.id)} handleAddClick={closeEditing} /* handleAddClick={closeEditing}  /*addButtonValue="Zapisz"  handleCloseEditing={closeEditing} handleDeleteClick={() => deleteListItem()} handleNameInputChange={(e) => setNameInputValue(e.target.value)} handleAmountInputChange={(e) => setAmountInputValue(e.target.value)} */ />
       ))}
     </ul>
   );
