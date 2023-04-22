@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useEffect } from "react";
 import Inputs from "./Inputs";
 import UnorderedList from "./UnorderedList";
 
@@ -7,16 +7,14 @@ const SingleColumn = ({
   nameInputPlaceholder,
   amountInputPlaceholder,
   sumName,
- // name,
-  //amount,
   listName,
-  setListName
+  setListName,
+  setListSum,
+  listSum,
 }) => {
-
- // const [incomeList, setIncomeList] = useState([]);
-//  const [expensesList, setExpensesList] = useState([]);
-
-  const [sumAmount, setSumAmount] = useState(0);
+  const reducedValues = listName.reduce((acc, item) => {
+    return acc + Number(item.value);
+  }, 0);
 
   const createItem = (nameFromInput, amountFromInput) => {
     if (
@@ -32,12 +30,13 @@ const SingleColumn = ({
         id: Date.now(),
       };
 
-      setListName([...listName, newItem])
-
-      console.log(listName)
-
+      setListName([...listName, newItem]);
     }
   };
+
+  useEffect(() => {
+    setListSum(reducedValues);
+  });
 
   return (
     <div className="col-12 col-xl-6 border income text-start pb-5 tableHolder">
@@ -46,17 +45,11 @@ const SingleColumn = ({
         nameInputPlaceholder={nameInputPlaceholder}
         amountInputPlaceholder={amountInputPlaceholder}
         handleAddClick={createItem}
-        //name={name}
-        //amount={amount}
         addButtonValue="Dodaj"
-
       />
       <UnorderedList listName={listName} setListName={setListName} />
       <p className="align-text-bottom mt-5 bottomText sums">
-        Suma {sumName}:{" "}
-        <span className="sum fw-bold">
-          {sumAmount}
-        </span>
+        Suma {sumName}: <span className="sum fw-bold">{listSum}</span>
         <span className="fw-bold"> zł</span>
       </p>
     </div>

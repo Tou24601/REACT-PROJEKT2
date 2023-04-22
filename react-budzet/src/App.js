@@ -1,4 +1,3 @@
-import "./reset.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { useState } from "react";
@@ -9,9 +8,17 @@ function App() {
   const [incomeList, setIncomeList] = useState([]);
   const [expensesList, setExpensesList] = useState([]);
 
+  const [incomesSum, setIncomesSum] = useState(0);
+  const [expensesSum, setExpensesSum] = useState(0);
+  const [balanceMsg, setBalanceMsg] = useState(0);
+
+  const balance = incomesSum - expensesSum;
+  
+
+
   return (
     <div className="container text-center m-4">
-      <Header />
+      <Header balanceMsg={balanceMsg} balance={balance} setBalanceMsg={setBalanceMsg} />
       <div className="row">
         <SingleColumn
           columnName="Przychody"
@@ -19,6 +26,8 @@ function App() {
           amountInputPlaceholder="Kwota"
           listName={incomeList}
           setListName={setIncomeList}
+          setListSum={setIncomesSum}
+          listSum={incomesSum}
           sumName="przychodów"
         />
         <SingleColumn
@@ -27,6 +36,8 @@ function App() {
           amountInputPlaceholder="Kwota"
           listName={expensesList}
           setListName={setExpensesList}
+          setListSum={setExpensesSum}
+          listSum={expensesSum}
           sumName="wydatków"
         />
       </div>
