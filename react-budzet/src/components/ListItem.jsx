@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,  useEffect } from "react";
 import Inputs from "./Inputs";
 import Button from "./Button";
 
@@ -7,7 +7,7 @@ const ListItem = ({
   amount,
   idValue,
   setListName,
-  listName,
+  listName /*setNewName, setNewValue */,
 }) => {
   const [isEditable, setIsEditable] = useState(false);
 
@@ -15,24 +15,34 @@ const ListItem = ({
     position: "absolute",
     display: isEditable ? "" : "none",
     backgroundColor: "white",
+    zIndex: "1",
     //w wersji responsywnej tak, żeby przykrywał oryginalny listItem - i nie przykrywał niczego więcej
   };
 
   const editListItem = () => {
     setIsEditable(!isEditable);
   };
+  const editableList = listName;
 
   const saveEditedList = (editedName, editedValue) => {
     console.log(editedName, editedValue);
     if (editedName === "" || editedValue === "" || editedValue <= 0) {
       alert("Wprowadź poprawne dane");
     } else {
-      const foundItem = listName.find((item) => item.id === idValue);
+     /* //    setNewName(editedName)
+      //  setNewValue(editedValue)
+
+      // name = editedName
+      //amount = editedValue
+      setListName()*/
+      const foundItem = editableList.find((item) => item.id === idValue);
       foundItem.name = editedName;
       foundItem.value = editedValue;
       setIsEditable(!isEditable);
       //nie wyświetla bez nowego renderu
     }
+    setListName(editableList)
+    console.log(listName)
   };
 
   const deleteListItem = () => {
@@ -43,18 +53,20 @@ const ListItem = ({
   };
 
   return (
-    <li className="mt-4 row">
-      <span className="fs-5 col-6">{`${name}: ${amount} zł`}</span>
-      <Button
-        className="col-3"
-        buttonValue="Edytuj"
-        handleClick={editListItem}
-      />
-      <Button
-        className="col-3"
-        buttonValue="Usuń"
-        handleClick={() => deleteListItem()}
-      />
+    <li>
+      <div className="mt-4 row" style={{ position: "relative" }}>
+        <span className="fs-5 col-6">{`${name}: ${amount} zł`}</span>
+        <Button
+          className="col-3"
+          buttonValue="Edytuj"
+          handleClick={editListItem}
+        />
+        <Button
+          className="col-3"
+          buttonValue="Usuń"
+          handleClick={() => deleteListItem()}
+        />
+      </div>
       <Inputs
         inputsStyle={inputsStyling}
         addButtonValue="Zapisz"

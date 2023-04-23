@@ -1,7 +1,18 @@
+import { useState } from "react";
 import ListItem from "./ListItem";
 
 const UnorderedList = ({ listName, setListName }) => {
-  
+ // const [newName, setNewName] = useState("");
+ // const [newValue, setNewValue] = useState("");
+ // const [newId, setNewId] = useState("");
+
+
+/*  const newArray = listName.map((item) => {
+    setNewName(item.name);
+    setNewValue(item.value);
+    setNewId(item.id)
+  })*/
+
   return (
     <ul className="mt-4">
       {listName.map((item) => (
