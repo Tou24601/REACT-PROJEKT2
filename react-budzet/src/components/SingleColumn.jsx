@@ -46,6 +46,7 @@ const SingleColumn = ({
         amountInputPlaceholder={amountInputPlaceholder}
         handleAddClick={createItem}
         addButtonValue="Dodaj"
+        nameInputSize={"col-11 col-lg-6"}
       />
       <UnorderedList listName={listName} setListName={setListName} />
       <p className="align-text-bottom mt-5 bottomText sums">

@@ -8,27 +8,25 @@ const Inputs = ({
   addButtonValue,
   handleAddClick,
   name,
-  amount
+  amount,
+  nameInputSize,
 }) => {
-
   const [nameInputValue, setNameInputValue] = useState(name || "");
   const [amountInputValue, setAmountInputValue] = useState(amount || "");
 
   const clearInputs = () => {
     setNameInputValue("");
     setAmountInputValue("");
-
-  }
+  };
 
   const getValuesFromInputs = () => {
-    handleAddClick(nameInputValue, amountInputValue)
-    clearInputs()
-    
-  }
+    handleAddClick(nameInputValue, amountInputValue);
+    clearInputs();
+  };
 
   return (
     <div className="row" style={inputsStyle}>
-      <div className="col-11 col-lg-5">
+      <div className={nameInputSize}>
         <input
           className="form-control form-control-lg"
           type="text"
@@ -45,9 +43,12 @@ const Inputs = ({
           value={amountInputValue}
           onChange={(e) => setAmountInputValue(e.target.value)}
         />
-      </div> 
+      </div>
       <div className="col-2">
-        <Button buttonValue={addButtonValue} handleClick={getValuesFromInputs} />
+        <Button
+          buttonValue={addButtonValue}
+          handleClick={getValuesFromInputs}
+        />
       </div>
     </div>
   );

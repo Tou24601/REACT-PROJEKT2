@@ -1,4 +1,4 @@
-const Button = ({buttonValue, handleClick, buttonId}) => {
+const Button = ({ buttonValue, handleClick, buttonId }) => {
   return (
     <div className="col-2">
       <button
