@@ -19,7 +19,6 @@ const ListItem = ({ name, amount, idValue, setListName, listName }) => {
   };
 
   const saveEditedList = (editedName, editedValue) => {
-    console.log(editedName, editedValue);
     if (editedName === "" || editedValue === "" || editedValue <= 0) {
       alert("Wprowadź poprawne dane");
     } else {
