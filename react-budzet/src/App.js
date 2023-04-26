@@ -8,37 +8,40 @@ function App() {
   const [incomeList, setIncomeList] = useState([]);
   const [expensesList, setExpensesList] = useState([]);
 
-  const [incomesSum, setIncomesSum] = useState(0);
-  const [expensesSum, setExpensesSum] = useState(0);
-  const [balanceMsg, setBalanceMsg] = useState(0);
+  const handleIncomesChange = (newIncomes) => {
+    setIncomeList(newIncomes);
+  };
+  const handleExpensesChange = (newExpenses) => {
+    setExpensesList(newExpenses);
+  };
 
-  const balance = incomesSum - expensesSum;
-  
+  const [balance, setBalance] = useState(0);
 
+  const sendSumValues = (incomesSumValue, expensesSumValue) => {
+    const newBalance = incomesSumValue - expensesSumValue;
+    console.log(newBalance)
+    setBalance(newBalance);
+  };
 
   return (
     <div className="container text-center m-4">
-      <Header balanceMsg={balanceMsg} balance={balance} setBalanceMsg={setBalanceMsg} />
+      <Header balance={balance} />
       <div className="row">
         <SingleColumn
           columnName="Przychody"
           nameInputPlaceholder="Nazwa przychodu"
-          amountInputPlaceholder="Kwota"
           listName={incomeList}
-          setListName={setIncomeList}
-          setListSum={setIncomesSum}
-          listSum={incomesSum}
+          handleListChange={handleIncomesChange}
           sumName="przychodów"
+          sendSumValues={sendSumValues}
         />
         <SingleColumn
           columnName="Wydatki"
           nameInputPlaceholder="Nazwa wydatku"
-          amountInputPlaceholder="Kwota"
           listName={expensesList}
-          setListName={setExpensesList}
-          setListSum={setExpensesSum}
-          listSum={expensesSum}
+          handleListChange={handleExpensesChange}
           sumName="wydatków"
+          sendSumValues={sendSumValues}
         />
       </div>
     </div>

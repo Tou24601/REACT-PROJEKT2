@@ -4,7 +4,6 @@ import Button from "./Button";
 const Inputs = ({
   inputsStyle,
   nameInputPlaceholder,
-  amountInputPlaceholder,
   addButtonValue,
   handleAddClick,
   name,
@@ -26,7 +25,7 @@ const Inputs = ({
 
   return (
     <div className="row" style={inputsStyle}>
-      <div className={nameInputSize}>
+      <div className="col-12 col-lg-6">
         <input
           className="form-control form-control-lg"
           type="text"
@@ -39,7 +38,7 @@ const Inputs = ({
         <input
           className="form-control form-control-lg mt-2 mt-lg-0"
           type="number"
-          placeholder={amountInputPlaceholder}
+          placeholder="Kwota"
           value={amountInputValue}
           onChange={(e) => setAmountInputValue(e.target.value)}
         />

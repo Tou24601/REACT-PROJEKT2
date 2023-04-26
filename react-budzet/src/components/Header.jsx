@@ -1,8 +1,12 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "../assets/icons8-us-dollar-circled-100.png";
 
-const Header = ({ setBalanceMsg, balance, balanceMsg }) => {
+const Header = ({balance}) => {
+
+  const [balanceMsg, setBalanceMsg] = useState("");
+
   useEffect(() => {
+    console.log(balance)
     if (balance === 0) {
       setBalanceMsg("Bilans wynosi zero");
     } else if (balance > 0) {
@@ -10,7 +14,7 @@ const Header = ({ setBalanceMsg, balance, balanceMsg }) => {
     } else if (balance < 0) {
       setBalanceMsg(`Bilans jest ujemny. Jesteś na minusie ${balance * -1} zł`);
     }
-  });
+  }, [balance]);
 
   return (
     <header className="text-center m-4">

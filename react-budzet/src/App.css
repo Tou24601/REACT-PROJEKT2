@@ -5,8 +5,15 @@ button {
 input {
   height: 40px;
 }
-.addButton {
-  height: 45px;
+.inputsInListItem {
+  position: absolute;
+  background-color: white;
+  z-index: 1;
+  top: -5px;
+  width: 90%;
+}
+.editableOn {
+  display: none;
 }
 .tableHolder {
   position: relative;

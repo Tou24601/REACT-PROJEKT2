@@ -2,7 +2,7 @@ import { useState } from "react";
 import Inputs from "./Inputs";
 import Button from "./Button";
 
-const ListItem = ({ name, amount, idValue, setListName, listName }) => {
+const ListItem = ({ name, amount, idValue, handleListChange, listName }) => {
   const [isEditable, setIsEditable] = useState(false);
 
   const inputsStyling = {
@@ -29,7 +29,7 @@ const ListItem = ({ name, amount, idValue, setListName, listName }) => {
         }
         return item;
       });
-      setListName(editableList);
+      handleListChange(editableList);
       setIsEditable(!isEditable);
     }
   };
@@ -38,7 +38,7 @@ const ListItem = ({ name, amount, idValue, setListName, listName }) => {
     const shortenedList = listName.filter((item) => {
       return item.id !== idValue;
     });
-    setListName(shortenedList);
+    handleListChange(shortenedList);
   };
 
   return (
@@ -58,6 +58,9 @@ const ListItem = ({ name, amount, idValue, setListName, listName }) => {
       </div>
       <Inputs
         inputsStyle={inputsStyling}
+        /*className={
+          isEditable ? "inputsInListItem" : "inputsInListItem editableOn"
+        }*/
         addButtonValue="Zapisz"
         handleAddClick={saveEditedList}
         name={name}
