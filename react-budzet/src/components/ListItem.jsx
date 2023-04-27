@@ -5,15 +5,6 @@ import Button from "./Button";
 const ListItem = ({ name, amount, idValue, handleListChange, listName }) => {
   const [isEditable, setIsEditable] = useState(false);
 
-  const inputsStyling = {
-    position: "absolute",
-    display: isEditable ? "" : "none",
-    backgroundColor: "white",
-    zIndex: "1",
-    top: "-5px",
-    width: "90%",
-  };
-
   const editListItem = () => {
     setIsEditable(!isEditable);
   };
@@ -57,10 +48,12 @@ const ListItem = ({ name, amount, idValue, handleListChange, listName }) => {
         />
       </div>
       <Inputs
-        inputsStyle={inputsStyling}
-        /*className={
-          isEditable ? "inputsInListItem" : "inputsInListItem editableOn"
-        }*/
+        inputsClass={
+          isEditable
+            ? "row inputsInListItem"
+            : "row inputsInListItem editableOff"
+        }
+        nameInputClass="col-6"
         addButtonValue="Zapisz"
         handleAddClick={saveEditedList}
         name={name}

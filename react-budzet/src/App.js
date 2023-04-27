@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SingleColumn from "./components/SingleColumn";
 
@@ -8,19 +8,30 @@ function App() {
   const [incomeList, setIncomeList] = useState([]);
   const [expensesList, setExpensesList] = useState([]);
 
-  const handleIncomesChange = (newIncomes) => {
-    setIncomeList(newIncomes);
-  };
-  const handleExpensesChange = (newExpenses) => {
-    setExpensesList(newExpenses);
+  const [incomesSum, setIncomesSum] = useState(0);
+  const [expensesSum, setExpensesSum] = useState(0);
+
+  const handleListChange = (newList, type) => {
+    if (type === "incomes") {
+      setIncomeList(newList);
+    } else {
+      setExpensesList(newList);
+    }
   };
 
   const [balance, setBalance] = useState(0);
+  const newBalance = incomesSum - expensesSum;
 
-  const sendSumValues = (incomesSumValue, expensesSumValue) => {
-    const newBalance = incomesSumValue - expensesSumValue;
-    console.log(newBalance)
+  useEffect(() => {
     setBalance(newBalance);
+  }, [newBalance]);
+
+  const sendSumValues = (sum, type) => {
+    if (type === "incomes") {
+      setIncomesSum(sum);
+    } else {
+      setExpensesSum(sum);
+    }
   };
 
   return (
@@ -31,17 +42,19 @@ function App() {
           columnName="Przychody"
           nameInputPlaceholder="Nazwa przychodu"
           listName={incomeList}
-          handleListChange={handleIncomesChange}
+          handleListChange={(newList) => handleListChange(newList, "incomes")}
           sumName="przychodów"
-          sendSumValues={sendSumValues}
+          sumValue={incomesSum}
+          sendSumValues={(sum) => sendSumValues(sum, "incomes")}
         />
         <SingleColumn
           columnName="Wydatki"
           nameInputPlaceholder="Nazwa wydatku"
           listName={expensesList}
-          handleListChange={handleExpensesChange}
+          handleListChange={(newList) => handleListChange(newList, "expenses")}
           sumName="wydatków"
-          sendSumValues={sendSumValues}
+          sumValue={expensesSum}
+          sendSumValues={(sum) => sendSumValues(sum, "expenses")}
         />
       </div>
     </div>

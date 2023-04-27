@@ -12,7 +12,7 @@ input {
   top: -5px;
   width: 90%;
 }
-.editableOn {
+.editableOff {
   display: none;
 }
 .tableHolder {

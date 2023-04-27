@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import Image from "../assets/icons8-us-dollar-circled-100.png";
 
-const Header = ({balance}) => {
-
+const Header = ({ balance }) => {
   const [balanceMsg, setBalanceMsg] = useState("");
 
   useEffect(() => {
-    console.log(balance)
     if (balance === 0) {
       setBalanceMsg("Bilans wynosi zero");
     } else if (balance > 0) {

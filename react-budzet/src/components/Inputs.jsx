@@ -2,13 +2,13 @@ import { useState } from "react";
 import Button from "./Button";
 
 const Inputs = ({
-  inputsStyle,
+  inputsClass,
   nameInputPlaceholder,
   addButtonValue,
   handleAddClick,
   name,
   amount,
-  nameInputSize,
+  nameInputClass,
 }) => {
   const [nameInputValue, setNameInputValue] = useState(name || "");
   const [amountInputValue, setAmountInputValue] = useState(amount || "");
@@ -24,8 +24,8 @@ const Inputs = ({
   };
 
   return (
-    <div className="row" style={inputsStyle}>
-      <div className="col-12 col-lg-6">
+    <div className={inputsClass}>
+      <div className={nameInputClass}>
         <input
           className="form-control form-control-lg"
           type="text"
