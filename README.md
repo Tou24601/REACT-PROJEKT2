@@ -1,5 +1,5 @@
 # REACT-PROJEKT2
 
-Simple responsive React app
+Simple responsive React app.
 
-live preview: https://jkolakowska-react.netlify.app/
+Live preview: https://jkolakowska-react.netlify.app/
