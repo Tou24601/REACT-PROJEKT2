@@ -1,5 +1,5 @@
 # REACT-PROJEKT2
 
-Simple responsive React app.
+Responsive React app made using NBP API.
 
 Live preview: https://jkolakowska-react.netlify.app/
